@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Field Agent",
-  description: "Organize your community",
+  description: "Field Agent by Richmond Creative Agency LLC",
 };
 
 export default function RootLayout({
