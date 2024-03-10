@@ -1,3 +1,3 @@
 export default function P({children, ...props}) {
-    return (<p>{children}</p>)
+    return (<p className="pb-2">{children}</p>)
 }
