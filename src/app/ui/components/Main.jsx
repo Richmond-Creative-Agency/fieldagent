@@ -7,9 +7,9 @@ export default function Main({children}) {
     return (
         <>
         <Header />
-        <main className="flex min-h-screen flex-col items-center justify-center p-24">
+        <div className="flex min-h-screen flex-col items-center justify-center p-24">
             {children}
-        </main>
+        </div>
         <footer>
             <Menu>
                 <NavButton href='http://richmondcreative.agency'>Richmond Creative Agency LLC</NavButton>
