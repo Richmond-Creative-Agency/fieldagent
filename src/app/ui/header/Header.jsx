@@ -9,6 +9,7 @@ export default function Header() {
         <header className="">
             <Menu>
                 <NavButton href="/">Home</NavButton>
+                <NavButton href="/about">About</NavButton>
                 <NavButton href="/guide/canvass">Canvass</NavButton>
             </Menu>
         </header>
