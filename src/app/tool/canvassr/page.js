@@ -1,8 +1,9 @@
 'use client'
-import { useState, useRef, forwardRef } from "react";
+import { useState } from "react";
 import Main from "../../ui/components/Main";
 import H1 from "../../ui/typography/H1";
 import H2 from "../../ui/typography/H2";
+import CanvassForm from "./CanvassForm";
 
 function formatPhoneNumber(phoneNumberString) {
     var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
@@ -10,43 +11,8 @@ function formatPhoneNumber(phoneNumberString) {
     if (match) {
       return match[1] + '-' + match[2] + '-' + match[3];
     }
-    return null;
+    return cleaned;
 }
-const CanvassInput = forwardRef( (props, ref) => {
-    function logValue(itemToLog) {
-        if( itemToLog ) {
-            console.log(itemToLog);
-        }
-
-    }
-
-    return( <input {...props} ref={ref} onChange={() => {
-        logValue(ref.current.value)
-    }} /> )
-} )
-
-
-function CanvassForm({formAction}) {
-    let firstNameRef = useRef(null);
-    let lastNameRef = useRef(null);
-    let phoneRef = useRef(null);
-
-
-
-    return(
-        <div>
-            <CanvassInput ref={firstNameRef} placeholder="First Name" />
-            <CanvassInput ref={lastNameRef} placeholder="Last Name" />
-            <CanvassInput ref={phoneRef} placeholder="Phone Number" type="number" />
-            <button onClick={()=>{formAction({
-                firstName: firstNameRef.current.value ?? '',
-                lastName: lastNameRef.current.value ?? '',
-                phone: phoneRef.current.value ?? '',
-            })}}>Submit</button>
-        </div>)
-
-}
-
 
 export default function Page() {
     const [canvassList, setCanvassList] = useState([
@@ -56,9 +22,9 @@ export default function Page() {
             phone: '1234567890',
         }
     ]);
-    console.log(canvassList)
     function addEntry(data = null) {
         console.log('Adding entry');
+        if( data === null || data === undefined ) return;
         let newList = [...canvassList, {...data}];
 
         setCanvassList(newList)
