@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Main from "../../ui/components/Main";
 import H1 from "../../ui/typography/H1";
 import H2 from "../../ui/typography/H2";
@@ -20,8 +20,12 @@ export default function Page() {
             firstName: 'John',
             lastName: 'Doe',
             phone: '1234567890',
+            email: null,
         }
     ]);
+
+    const [downloadLink, setDownloadLink] = useState(null);
+
     function addEntry(data = null) {
         console.log('Adding entry');
         if( data === null || data === undefined ) return;
@@ -30,19 +34,48 @@ export default function Page() {
         setCanvassList(newList)
     }
 
+    function makeCSV(data) {
+        if( typeof data != 'object') return;
+        console.log(data);
+        const titleKeys = Object.keys(data[0]);
+        const refinedData = [];
+        refinedData.push(titleKeys);
+        // console.log(refinedData);
+        data.forEach( item => {
+            refinedData.push(Object.values(item));
+        })
+        console.log(refinedData);
+        let csvContent = '';
+
+        refinedData.forEach( row => {
+            csvContent += row.join(',') + '\n';
+        })
+        console.log(csvContent);
+        const blob = new Blob([csvContent], {type: 'text/csv;charset=utf-8,'});
+        const downloadUrl = URL.createObjectURL(blob);
+        window.open(downloadUrl)
+    }
+
     return(
         <Main>
+
             <H1>Canvassr</H1>
             <CanvassForm formAction={addEntry} />
-            {canvassList && canvassList.map((item, index) => {
-                const { firstName, lastName, phone } = item;
-                return(<div key={index}>
-                    <H2>{firstName} {lastName}</H2>
-                    <p>Phone: {formatPhoneNumber(phone)} </p>
-                    <p>ID: {index}</p>
+            <div className="grid grid-cols-3 my-4 gap-4">
+                {canvassList && canvassList.map((item, index) => {
+                    const { firstName, lastName, phone, email } = item;
+                    return(<div className="p-4 rounded-md bg-slate-900" key={index}>
+                        <H2>{firstName} {lastName}</H2>
+                        <p>Email: {email}</p>
+                        <p>Phone: {formatPhoneNumber(phone)} </p>
+                        <p>ID: {index}</p>
 
-                </div>)
-            })}
+                    </div>)
+                })}
+            </div>
+            <button onClick={() => {
+                makeCSV(canvassList);
+            }}>Export CSV</button>
         </Main>
     )
 }
