@@ -8,7 +8,12 @@ export default function CanvassForm({formAction}) {
     let phoneRef = useRef(null);
     let emailRef = useRef(null);
 
-
+    function clearInputs() {
+        firstNameRef.current.value = '';
+        lastNameRef.current.value = '';
+        emailRef.current.value = '';
+        phoneRef.current.value = '';
+    }
     return(
         <div className="flex flex-col">
             <H2>Add Person</H2>
@@ -29,6 +34,7 @@ export default function CanvassForm({formAction}) {
                             email: newEmail.trim(),
                         }
                     if( !newFirstName || !newLastName || !newPhone || !newEmail || newPhone.length > 10 ) return;
+                    clearInputs();
                     formAction(entry)
                 }
             }>Submit</CanvassButton>
