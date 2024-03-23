@@ -5,7 +5,8 @@ import H1 from "../../ui/typography/H1";
 import H2 from "../../ui/typography/H2";
 import CanvassForm from "./CanvassForm";
 import ImportCSV from "./ImportCSV";
-
+import ExportCSV from "./ExportCSV";
+const _ = require("lodash");
 function formatPhoneNumber(phoneNumberString) {
     var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
     var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
@@ -41,9 +42,13 @@ export default function Page() {
     function addCSVEntries(data = null) {
         console.log('Adding entries');
         if( data === null || data === undefined ) return;
-        console.log(data);
+        if(canvassList.includes(data)) {
+            console.log(`duplicate entry in data: ${data}`);
+            return;
+        }
+        let newList = _.uniqWith([...canvassList, ...data], _.isEqual);
         // setCanvassList(newList)
-        let newList = [...canvassList, ...data];
+        console.log(newList)
         setCanvassList(newList);
     }
 
@@ -87,12 +92,7 @@ export default function Page() {
                 })}
             </div>
             <ImportCSV updateEntries={addCSVEntries} />
-            <div>
-                <h2>Export</h2>
-                <a href={downloadLink} download='canvassr-export' onClick={() => {
-                makeCSV(canvassList);
-            }}>Export CSV</a>
-            </div>
+            <ExportCSV downloadLink={downloadLink} makeCSV={makeCSV} canvassList={canvassList}/>
 
         </Main>
     )
