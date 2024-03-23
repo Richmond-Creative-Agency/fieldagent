@@ -24,7 +24,7 @@ export default function ImportCSV({updateEntries}) {
                     return object;
                 }
             )
-            console.log(tableObject);
+            console.log('CSV Read: ' + JSON.stringify(tableObject))
             updateEntries(tableObject);
         }
     }
