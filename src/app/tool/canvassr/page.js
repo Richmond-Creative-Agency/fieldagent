@@ -1,9 +1,10 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Main from "../../ui/components/Main";
 import H1 from "../../ui/typography/H1";
 import H2 from "../../ui/typography/H2";
 import CanvassForm from "./CanvassForm";
+import ImportCSV from "./ImportCSV";
 
 function formatPhoneNumber(phoneNumberString) {
     var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
@@ -13,6 +14,9 @@ function formatPhoneNumber(phoneNumberString) {
     }
     return cleaned;
 }
+
+
+
 
 export default function Page() {
     const [canvassList, setCanvassList] = useState([
@@ -34,6 +38,15 @@ export default function Page() {
         setCanvassList(newList)
     }
 
+    function addCSVEntries(data = null) {
+        console.log('Adding entries');
+        if( data === null || data === undefined ) return;
+        console.log(data);
+        // setCanvassList(newList)
+        let newList = [...canvassList, ...data];
+        setCanvassList(newList);
+    }
+
     function makeCSV(data) {
         if( typeof data != 'object') return;
         console.log(data);
@@ -53,7 +66,7 @@ export default function Page() {
         console.log(csvContent);
         const blob = new Blob([csvContent], {type: 'text/csv;charset=utf-8,'});
         const downloadUrl = URL.createObjectURL(blob);
-        window.open(downloadUrl)
+        setDownloadLink(downloadUrl);
     }
 
     return(
@@ -73,9 +86,14 @@ export default function Page() {
                     </div>)
                 })}
             </div>
-            <button onClick={() => {
+            <ImportCSV updateEntries={addCSVEntries} />
+            <div>
+                <h2>Export</h2>
+                <a href={downloadLink} download='canvassr-export' onClick={() => {
                 makeCSV(canvassList);
-            }}>Export CSV</button>
+            }}>Export CSV</a>
+            </div>
+
         </Main>
     )
 }
