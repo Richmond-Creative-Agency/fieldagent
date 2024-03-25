@@ -32,7 +32,7 @@ export default function ImportCSV({ updateEntries }) {
   }
   return (
     <>
-      <label for="import-csv" className="p-2">
+      <label htmlFor="import-csv" className="p-2">
         Import CSV
       </label>
 

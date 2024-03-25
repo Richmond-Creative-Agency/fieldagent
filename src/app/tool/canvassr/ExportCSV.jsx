@@ -10,7 +10,7 @@ export default function ExportCSV({ downloadLink, makeCSV, canvassList }) {
   return (
     <>
       <div>
-        <label className="p-2" for="download-name">
+        <label className="p-2" htmlFor="download-name">
           Download Name
         </label>
         <input
