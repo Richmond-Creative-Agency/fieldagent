@@ -6,6 +6,7 @@ import H2 from '../../ui/typography/H2';
 import CanvassForm from './CanvassForm';
 import ImportCSV from './ImportCSV';
 import ExportCSV from './ExportCSV';
+import P from '../../ui/typography/P';
 const _ = require('lodash');
 function formatPhoneNumber(phoneNumberString) {
   var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
@@ -17,21 +18,16 @@ function formatPhoneNumber(phoneNumberString) {
 }
 
 export default function Page() {
-  const [canvassList, setCanvassList] = useState([
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-      phone: '1234567890',
-      email: null,
-    },
-  ]);
+  const [canvassList, setCanvassList] = useState([]);
   const [activeTab, setActiveTab] = useState('Entries');
   const [downloadLink, setDownloadLink] = useState(null);
-
   function addEntry(data = null) {
     console.log('Adding entry');
+    let newList = [];
     if (data === null || data === undefined) return;
-    let newList = [...canvassList, { ...data }];
+    if (canvassList != null) {
+      newList = _.uniqWith([...canvassList, { ...data }], _.isEqual);
+    }
 
     setCanvassList(newList);
   }
@@ -39,8 +35,8 @@ export default function Page() {
   function addCSVEntries(data = null) {
     console.log('Adding entries');
     if (data === null || data === undefined) return;
-    if (canvassList.includes(data)) {
-      console.log(`duplicate entry in data: ${data}`);
+    if (_.uniqWith([...canvassList, ...data], _.isEqual)) {
+      console.warn(`duplicate entry in data: ${JSON.stringify(data)}`);
       return;
     }
     let newList = _.uniqWith([...canvassList, ...data], _.isEqual);
@@ -53,6 +49,7 @@ export default function Page() {
     if (typeof data != 'object') return;
     console.log(data);
     const titleKeys = Object.keys(data[0]);
+    console.log(titleKeys);
     const refinedData = [];
     refinedData.push(titleKeys);
     // console.log(refinedData);
@@ -108,37 +105,47 @@ export default function Page() {
             </div>
           )}
         </div>
+        {canvassList && (
+          <div className="grid grid-cols-subgrid col-span-9 my-4">
+            {canvassList.map((item, index) => {
+              const { first_name, last_name, phone, email } = item;
 
-        <div className="grid grid-cols-subgrid col-span-9 my-4">
-          {canvassList &&
-            canvassList.map((item, index) => {
-              const { firstName, lastName, phone, email } = item;
               return (
                 <div
                   className="p-4 col-span-3 rounded-md bg-slate-900"
                   key={index}
                 >
                   <H2>
-                    {firstName} {lastName}
+                    {first_name} {last_name}
                   </H2>
-                  <p>Email: {email}</p>
-                  <p>Phone: {formatPhoneNumber(phone)} </p>
                   <p>ID: {index}</p>
+                  <p>Email: {email}</p>
+                  {phone != '' && phone != null && (
+                    <p>Phone: {formatPhoneNumber(phone)} </p>
+                  )}
                 </div>
               );
             })}
-        </div>
+          </div>
+        )}
+        {canvassList === null && (
+          <div className="col-span-9">
+            <H2>No Entries</H2>
+            <P>Add a new Entry!</P>
+          </div>
+        )}
       </div>
     </Main>
   );
 }
 
 function TabButton({ title, tabAction }) {
+  let buttonClasses = 'p-2 bg-slate-600 ';
   return (
     <>
       <li>
         <button
-          className="p-2 bg-slate-600 "
+          className={buttonClasses}
           onClick={() => {
             tabAction(title);
           }}
