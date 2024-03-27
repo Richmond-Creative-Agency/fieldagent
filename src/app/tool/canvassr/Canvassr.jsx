@@ -36,7 +36,7 @@ export default function Canvassr({ children }) {
     console.log('Editing entry');
     let newList = [];
     if (data === null || data === undefined) return;
-    console.log(data.id);
+    // console.log(data.id);
     if (canvassList != null) {
       newList = [...canvassList];
       newList[data.id] = { ...data };
@@ -47,11 +47,8 @@ export default function Canvassr({ children }) {
   function addCSVEntries(data = null) {
     console.log('Adding entries');
     if (data === null || data === undefined) return;
-    if (_.uniqWith([...canvassList, ...data], _.isEqual)) {
-      console.warn(`duplicate entry in data: ${JSON.stringify(data)}`);
-      return;
-    }
-    let newList = _.uniqWith([...canvassList, ...data], _.isEqual);
+
+    let newList = [...data];
     // setCanvassList(newList)
     console.log(newList);
     setCanvassList(newList);
