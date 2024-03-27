@@ -45,6 +45,14 @@ export default function CanvassrEntry({ entry, index, setCanvassList }) {
         })}
       </div>
 
+      <div className="flex space-between gap-4">
+        <button className="p-2 bg-green-500" onClick={canvassContact}>
+          Canvassed
+        </button>
+        <button className="p-2 bg-pink-500" onClick={rejectContact}>
+          Rejected
+        </button>
+      </div>
     </div>
   );
 }
