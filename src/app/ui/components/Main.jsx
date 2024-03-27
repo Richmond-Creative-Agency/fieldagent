@@ -8,9 +8,7 @@ export default function Main({ children }) {
     <div className="container mx-auto">
       <Header />
 
-      <div className="flex w-full min-h-screen flex-col items-center justify-center p-24">
-        <Suspense fallback={<p>Loading Page</p>}>{children}</Suspense>
-      </div>
+      <Suspense fallback={<p>Loading Page</p>}>{children}</Suspense>
 
       <footer>
         <Menu>
