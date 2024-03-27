@@ -6,6 +6,9 @@ export default function CanvassList({ canvassList, setCanvassList }) {
   return (
     canvassList && (
       <div className="grid grid-cols-subgrid col-span-9 my-4">
+        <h2 className="text-3xl mb-2 col-span-9">
+          {canvassList.length} Entr{canvassList.length === 1 ? 'y' : 'ies'}
+        </h2>
         {canvassList.map((item, index) => {
           return (
             <Suspense key={index}>
