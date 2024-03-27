@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
-import H2 from '../../ui/typography/H2';
-import H3 from '../../ui/typography/H3';
+
 export default function ExportCSV({ downloadLink, makeCSV, canvassList }) {
   let [downloadName, setDownloadName] = useState('canvassr-export');
   let ref = useRef(null);
@@ -9,18 +8,16 @@ export default function ExportCSV({ downloadLink, makeCSV, canvassList }) {
   }
   return (
     <>
-      <div>
-        <label className="p-2" htmlFor="download-name">
-          Download Name
-        </label>
-        <input
-          id="download-name"
-          ref={ref}
-          className="text-slate-600 p-2"
-          onChange={handleDownloadName}
-          defaultValue={downloadName}
-        />
-      </div>
+      <label className="p-2" htmlFor="download-name">
+        Download Name
+      </label>
+      <input
+        id="download-name"
+        ref={ref}
+        className="text-slate-600 p-2"
+        onChange={handleDownloadName}
+        defaultValue={downloadName}
+      />
 
       <a
         href={downloadLink}
