@@ -1,6 +1,6 @@
 import CanvassForm from './CanvassForm';
 import ImportCSV from './ImportCSV';
-import ExportCSV from './exportCSV';
+import ExportCSV from './ExportCSV';
 import H2 from '../../ui/typography/H2';
 
 import { Suspense } from 'react';
