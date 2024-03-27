@@ -10,11 +10,11 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <Main>
+    <>
       <H1>Canvassr</H1>
       <Suspense fallback={<p>Loading Canvassr</p>}>
         <Canvassr />
       </Suspense>
-    </Main>
+    </>
   );
 }
