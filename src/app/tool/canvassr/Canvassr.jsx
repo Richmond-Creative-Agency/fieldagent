@@ -14,7 +14,7 @@ function formatPhoneNumber(phoneNumberString) {
 }
 export default function Canvassr({ children }) {
   const [canvassList, setCanvassList] = useState([]);
-  const [activeTab, setActiveTab] = useState('Entries');
+
   const [downloadLink, setDownloadLink] = useState(null);
   function addEntry(data = null) {
     console.log('Adding entry');
@@ -81,19 +81,21 @@ export default function Canvassr({ children }) {
   }
 
   return (
-    <div className="grid grid-cols-12 gap-4 w-full">
-      <Tabs
-        setActiveTab={setActiveTab}
-        activeTab={activeTab}
-        addEntry={addEntry}
-        downloadLink={downloadLink}
-        makeCSV={makeCSV}
-        canvassList={canvassList}
-        addCSVEntries={addCSVEntries}
-      />
+    <>
+      <Suspense>
+        <div className="grid grid-cols-12 gap-4 w-full">
+          <Tabs
+            addEntry={addEntry}
+            downloadLink={downloadLink}
+            makeCSV={makeCSV}
+            canvassList={canvassList}
+            addCSVEntries={addCSVEntries}
+          />
 
-      <CanvassList canvassList={canvassList} setCanvassList={editEntry} />
-      {children}
-    </div>
+          <CanvassList canvassList={canvassList} setCanvassList={editEntry} />
+          {children}
+        </div>
+      </Suspense>
+    </>
   );
 }
