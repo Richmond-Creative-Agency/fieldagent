@@ -7,11 +7,10 @@ export default function Main({ children }) {
   return (
     <div className="container mx-auto">
       <Header />
-      <Suspense>
-        <div className="flex w-full min-h-screen flex-col items-center justify-center p-24">
-          {children}
-        </div>
-      </Suspense>
+
+      <div className="flex w-full min-h-screen flex-col items-center justify-center p-24">
+        <Suspense fallback={<p>Loading Page</p>}>{children}</Suspense>
+      </div>
 
       <footer>
         <Menu>
