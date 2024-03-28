@@ -1,6 +1,5 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-export default function Button({children, ...props}) {
-
-    return( <Link {...props}>{children}</Link> )
+export default function Button({ children, ...props }) {
+  return <Link {...props}>{children}</Link>;
 }
