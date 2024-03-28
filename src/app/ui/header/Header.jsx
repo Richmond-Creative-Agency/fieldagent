@@ -5,21 +5,11 @@ export default function Header() {
   return (
     <header className="">
       <Menu>
-        <NavButton to="/" href="/">
-          Home
-        </NavButton>
-        <NavButton to="/about" href="/about">
-          About
-        </NavButton>
-        <NavButton to="/guide/canvass" href="/guide/canvass">
-          Canvass
-        </NavButton>
-        <NavButton to="/tool/canvassr" href="/tool/canvassr">
-          Canvassr
-        </NavButton>
-        <NavButton to="/donate" href="/donate">
-          Donate
-        </NavButton>
+        <NavButton href="/">Home</NavButton>
+        <NavButton href="/about">About</NavButton>
+        <NavButton href="/guide/canvass">Canvass</NavButton>
+        <NavButton href="/tool/canvassr">Canvassr</NavButton>
+        <NavButton href="/donate">Donate</NavButton>
       </Menu>
     </header>
   );
