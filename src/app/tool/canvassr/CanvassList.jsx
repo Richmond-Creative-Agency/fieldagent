@@ -3,10 +3,10 @@ import P from '../../ui/typography/P';
 import { Suspense } from 'react';
 import CanvassrEntry from './CanvassrEntry';
 import Loading from './loading';
-export default async function CanvassList({ canvassList, setCanvassList }) {
+export default function CanvassList({ canvassList, setCanvassList }) {
   return (
     canvassList && (
-      <div className="grid grid-cols-subgrid col-span-9 px-2">
+      <div className="md:grid grid-cols-subgrid col-span-12 md:col-span-9 px-2">
         <h2 className="text-3xl mb-2 col-span-9">
           {canvassList.length} Entr{canvassList.length === 1 ? 'y' : 'ies'}
         </h2>
