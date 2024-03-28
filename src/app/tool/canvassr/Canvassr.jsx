@@ -2,6 +2,7 @@
 import { useState, Suspense } from 'react';
 import CanvassList from './CanvassList';
 import Tabs from './Tabs';
+import Loading from './loading';
 const _ = require('lodash');
 
 function formatPhoneNumber(phoneNumberString) {
@@ -82,7 +83,7 @@ export default function Canvassr({ children }) {
 
   return (
     <>
-      <Suspense>
+      <Suspense fallback={<Loading />}>
         <div className="grid grid-cols-12 gap-4 w-full">
           <Tabs
             addEntry={addEntry}

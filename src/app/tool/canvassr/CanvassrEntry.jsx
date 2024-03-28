@@ -1,7 +1,6 @@
 import H2 from '../../ui/typography/H2';
-import { useState } from 'react';
 import H3 from '../../ui/typography/H3';
-export default function CanvassrEntry({ entry, index, setCanvassList }) {
+export default async function CanvassrEntry({ entry, index, setCanvassList }) {
   const {
     first_name,
     id,

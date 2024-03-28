@@ -2,7 +2,8 @@ import H2 from '../../ui/typography/H2';
 import P from '../../ui/typography/P';
 import { Suspense } from 'react';
 import CanvassrEntry from './CanvassrEntry';
-export default function CanvassList({ canvassList, setCanvassList }) {
+import Loading from './loading';
+export default async function CanvassList({ canvassList, setCanvassList }) {
   return (
     canvassList && (
       <div className="grid grid-cols-subgrid col-span-9 px-2">
@@ -11,7 +12,7 @@ export default function CanvassList({ canvassList, setCanvassList }) {
         </h2>
         {canvassList.map((item, index) => {
           return (
-            <Suspense key={index}>
+            <Suspense fallback={<Loading />} key={index}>
               <CanvassrEntry
                 entry={item}
                 setCanvassList={setCanvassList}

@@ -8,13 +8,12 @@ export const metadata = {
   description: 'Canvass your community',
 };
 
-export default function Page() {
+export default function Page({ children }) {
   return (
     <>
       <H1>Canvassr</H1>
-      <Suspense fallback={<p>Loading Canvassr</p>}>
-        <Canvassr />
-      </Suspense>
+      <Canvassr />
+      {children}
     </>
   );
 }
