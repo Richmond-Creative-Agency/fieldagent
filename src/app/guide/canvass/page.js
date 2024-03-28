@@ -19,7 +19,7 @@ export default function Page() {
       <P>Canvassing can be done anywhere, by anyone.</P>
       <P>
         Our Canvassing tool, <Link href="/tool/canvassr">Canvassr</Link>, can be
-        used to help track who you have and haven't canvassed.
+        used to help track who you have and haven&apos;t canvassed.
       </P>
       <H2>What is Canvassr?</H2>
       <P>
