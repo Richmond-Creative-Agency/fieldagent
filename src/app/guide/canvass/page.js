@@ -24,7 +24,7 @@ export default function Page() {
       <H2>What is Canvassr?</H2>
       <P>
         Canvassr is a tool for organizers who are canvassing in their
-        communities. It's a free tool for all organizers.
+        communities. It&apos;s a free tool for all organizers.
       </P>
       <P>
         Looking to support? <Link href="/donate">Donate</Link>
