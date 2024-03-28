@@ -1,15 +1,15 @@
 import H2 from '../../ui/typography/H2';
 import H3 from '../../ui/typography/H3';
-export default async function CanvassrEntry({ entry, index, setCanvassList }) {
+export default function CanvassrEntry({ entry, index, setCanvassList }) {
   const { first_name, last_name, canvass_state = null } = entry;
 
-  let classes = 'p-4 col-span-3 rounded-md bg-slate-900';
+  let classes = 'p-4 my-2 col-span-3 rounded-md bg-slate-900';
 
   if (canvass_state === 'canvassed') {
-    classes = 'p-4 col-span-3 rounded-md bg-green-900';
+    classes = 'p-4 my-2 col-span-3 rounded-md bg-green-900';
   }
   if (canvass_state === 'rejected') {
-    classes = 'p-4 col-span-3 rounded-md bg-red-900';
+    classes = 'p-4 my-2 col-span-3 rounded-md bg-red-900';
   }
 
   function canvassContact() {
