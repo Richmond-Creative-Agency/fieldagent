@@ -6,12 +6,11 @@ export const metadata = {
   description: 'Canvass your community',
 };
 
-export default function Page({ children }) {
+export default function Page() {
   return (
     <>
       <H1>Canvassr</H1>
       <Canvassr />
-      {children}
     </>
   );
 }
