@@ -5,10 +5,12 @@ import NavButton from './NavButton';
 import { Suspense } from 'react';
 export default function Main({ children }) {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto min-h-svh">
       <Header />
 
-      <Suspense fallback={<p>Loading Page</p>}>{children}</Suspense>
+      <Suspense fallback={<p>Loading Page</p>}>
+        <main>{children}</main>
+      </Suspense>
 
       <footer>
         <Menu>
