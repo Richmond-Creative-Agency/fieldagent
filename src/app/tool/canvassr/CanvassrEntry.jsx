@@ -1,14 +1,7 @@
 import H2 from '../../ui/typography/H2';
 import H3 from '../../ui/typography/H3';
 export default async function CanvassrEntry({ entry, index, setCanvassList }) {
-  const {
-    first_name,
-    id,
-    last_name,
-    phone,
-    email,
-    canvass_state = null,
-  } = entry;
+  const { first_name, last_name, canvass_state = null } = entry;
 
   let classes = 'p-4 col-span-3 rounded-md bg-slate-900';
 

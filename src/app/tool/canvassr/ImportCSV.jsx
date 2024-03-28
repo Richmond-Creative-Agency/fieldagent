@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import H2 from '../../ui/typography/H2';
 export default function ImportCSV({ updateEntries, ...props }) {
   let csvRef = useRef(null);
   function importCSV() {
