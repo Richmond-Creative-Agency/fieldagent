@@ -29,6 +29,7 @@ export default function CanvassrEntry({ entry, index, setCanvassList }) {
       <div className="py-2">
         <H3>Fields</H3>
         {objectKeys.map((key, index) => {
+          // TODO: #8 Add support for editing fields
           return (
             <p key={index}>
               {key}: {entry[key]}

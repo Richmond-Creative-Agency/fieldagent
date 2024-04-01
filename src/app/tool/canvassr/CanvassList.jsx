@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import CanvassrEntry from './CanvassrEntry';
 import Loading from './loading';
 export default function CanvassList({ canvassList, setCanvassList }) {
+  //TODO: #7 Correct Grid Layout
   return (
     canvassList && (
       <div className="md:grid grid-cols-subgrid col-span-12 md:col-span-9 px-2">

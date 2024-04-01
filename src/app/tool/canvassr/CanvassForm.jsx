@@ -13,6 +13,7 @@ export default function CanvassForm({ formAction }) {
   let stateRef = useRef(null);
   let noteRef = useRef(null);
 
+  // TODO: #5 Refactor ClearInputs Function
   function clearInputs() {
     firstNameRef.current.value = '';
     lastNameRef.current.value = '';
@@ -69,8 +70,10 @@ export default function CanvassForm({ formAction }) {
         cols="10"
         rows="10"
       ></textarea>
+
       <CanvassButton
         onClick={() => {
+          // TODO: #6 Refactor this whole function, break out of JSX
           let newFirstName = firstNameRef.current.value;
           let newLastName = lastNameRef.current.value;
           let newPhone = phoneRef.current.value;
