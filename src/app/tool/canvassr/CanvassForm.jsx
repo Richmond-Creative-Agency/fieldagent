@@ -59,7 +59,7 @@ export default function CanvassForm({ formAction }) {
         type="text"
       />
       <select className="text-slate-600 p-1" ref={stateRef}>
-        <option>State</option>
+        <option value="">State</option>
         <option value="VA">Virginia</option>
       </select>
       <textarea
