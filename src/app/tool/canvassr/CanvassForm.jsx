@@ -13,12 +13,15 @@ export default function CanvassForm({ formAction }) {
   let stateRef = useRef(null);
   let noteRef = useRef(null);
 
-  // TODO: #5 Refactor ClearInputs Function
   function clearInputs() {
     firstNameRef.current.value = '';
     lastNameRef.current.value = '';
     emailRef.current.value = '';
     phoneRef.current.value = '';
+    addressRef.current.value = '';
+    cityRef.current.value = '';
+    stateRef.current.selectedIndex = 0;
+    noteRef.current.value = '';
   }
   return (
     <div className="flex flex-col">
