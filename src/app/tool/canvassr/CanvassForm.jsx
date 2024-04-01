@@ -58,21 +58,45 @@ export default function CanvassForm({ formAction }) {
         placeholder="City"
         type="text"
       />
-      <select ref={stateRef}>
+      <select className="text-slate-600 p-1" ref={stateRef}>
         <option>State</option>
+        <option value="VA">Virginia</option>
       </select>
-      <textarea ref={noteRef} cols="10" rows="10"></textarea>
+      <textarea
+        className="text-slate-600 p-1"
+        ref={noteRef}
+        placeholder="Notes Here"
+        cols="10"
+        rows="10"
+      ></textarea>
       <CanvassButton
         onClick={() => {
           let newFirstName = firstNameRef.current.value;
           let newLastName = lastNameRef.current.value;
           let newPhone = phoneRef.current.value;
           let newEmail = emailRef.current.value;
+          let newAddress = addressRef.current.value;
+          let newCity = cityRef.current.value;
+          let newState = stateRef.current.value;
+          let newNotes = noteRef.current.value;
+
+          newFirstName = newFirstName.trim();
+          newLastName = newLastName.trim();
+          newPhone = newPhone.trim();
+          newEmail = newEmail.trim();
+          newAddress = newAddress.trim();
+          newCity = newCity.trim();
+          newNotes = newNotes.trim();
+
           let entry = {
-            first_name: newFirstName.trim(),
-            last_name: newLastName.trim(),
-            phone: newPhone.trim(),
-            email: newEmail.trim(),
+            first_name: newFirstName,
+            last_name: newLastName,
+            phone: newPhone,
+            email: newEmail,
+            address: newAddress,
+            city: newCity,
+            state: newState,
+            notes: newNotes,
           };
           // TODO: #2 Error message if fields empty
           if (!newFirstName || !newLastName || !newEmail) return;
