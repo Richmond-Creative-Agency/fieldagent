@@ -3,10 +3,15 @@ import H2 from '../../ui/typography/H2';
 import CanvassInput from './CanvassInput';
 import CanvassButton from './CanvassButton';
 export default function CanvassForm({ formAction }) {
+  // TODO: #1 Ref refactor this.
   let firstNameRef = useRef(null);
   let lastNameRef = useRef(null);
   let phoneRef = useRef(null);
   let emailRef = useRef(null);
+  let addressRef = useRef(null);
+  let cityRef = useRef(null);
+  let stateRef = useRef(null);
+  let noteRef = useRef(null);
 
   function clearInputs() {
     firstNameRef.current.value = '';
@@ -41,6 +46,22 @@ export default function CanvassForm({ formAction }) {
         placeholder="Phone Number"
         type="number"
       />
+      <CanvassInput
+        className="text-slate-600 p-1"
+        ref={addressRef}
+        placeholder="Address Line 1"
+        type="text"
+      />
+      <CanvassInput
+        className="text-slate-600 p-1"
+        ref={cityRef}
+        placeholder="City"
+        type="text"
+      />
+      <select ref={stateRef}>
+        <option>State</option>
+      </select>
+      <textarea ref={noteRef} cols="10" rows="10"></textarea>
       <CanvassButton
         onClick={() => {
           let newFirstName = firstNameRef.current.value;
@@ -53,6 +74,7 @@ export default function CanvassForm({ formAction }) {
             phone: newPhone.trim(),
             email: newEmail.trim(),
           };
+          // TODO: #2 Error message if fields empty
           if (!newFirstName || !newLastName || !newEmail) return;
           clearInputs();
           formAction(entry);
