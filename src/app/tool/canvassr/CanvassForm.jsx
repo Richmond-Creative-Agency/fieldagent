@@ -23,6 +23,33 @@ export default function CanvassForm({ formAction }) {
     stateRef.current.selectedIndex = 0;
     noteRef.current.value = '';
   }
+
+  function handleSubmit() {
+    let newFirstName = firstNameRef.current.value.trim();
+    let newLastName = lastNameRef.current.value.trim();
+    let newPhone = phoneRef.current.value.trim();
+    let newEmail = emailRef.current.value.trim();
+    let newAddress = addressRef.current.value.trim();
+    let newCity = cityRef.current.value.trim();
+    let newState = stateRef.current.value.trim();
+    let newNotes = noteRef.current.value.trim();
+
+    let entry = {
+      first_name: newFirstName,
+      last_name: newLastName,
+      phone: newPhone,
+      email: newEmail,
+      address: newAddress,
+      city: newCity,
+      state: newState,
+      notes: newNotes,
+    };
+    // TODO: #2 Error message if fields empty
+    if (!newFirstName || !newLastName || !newEmail) return;
+    clearInputs();
+    formAction(entry);
+  }
+
   return (
     <div className="flex flex-col">
       <CanvassInput
@@ -125,38 +152,7 @@ export default function CanvassForm({ formAction }) {
 
       <CanvassButton
         onClick={() => {
-          // TODO: #6 Refactor this whole function, break out of JSX
-          let newFirstName = firstNameRef.current.value;
-          let newLastName = lastNameRef.current.value;
-          let newPhone = phoneRef.current.value;
-          let newEmail = emailRef.current.value;
-          let newAddress = addressRef.current.value;
-          let newCity = cityRef.current.value;
-          let newState = stateRef.current.value;
-          let newNotes = noteRef.current.value;
-
-          newFirstName = newFirstName.trim();
-          newLastName = newLastName.trim();
-          newPhone = newPhone.trim();
-          newEmail = newEmail.trim();
-          newAddress = newAddress.trim();
-          newCity = newCity.trim();
-          newNotes = newNotes.trim();
-
-          let entry = {
-            first_name: newFirstName,
-            last_name: newLastName,
-            phone: newPhone,
-            email: newEmail,
-            address: newAddress,
-            city: newCity,
-            state: newState,
-            notes: newNotes,
-          };
-          // TODO: #2 Error message if fields empty
-          if (!newFirstName || !newLastName || !newEmail) return;
-          clearInputs();
-          formAction(entry);
+          handleSubmit();
         }}
       >
         Submit
