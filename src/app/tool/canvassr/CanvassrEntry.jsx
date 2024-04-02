@@ -6,7 +6,7 @@ function Field({ entry, field, setCanvassList }) {
   const [isEditing, setIsEditing] = useState(false);
 
   let elementClasses = 'text-slate-600 p-2';
-  let inputRef = useRef(entry[field]);
+  let inputRef = useRef(null);
 
   function handleEdit() {
     setIsEditing(true);
@@ -23,7 +23,7 @@ function Field({ entry, field, setCanvassList }) {
     <input
       className={elementClasses}
       ref={inputRef}
-      defaultValue={inputRef.current}
+      defaultValue={entry[field]}
     />
   );
   if (field === 'id') {
