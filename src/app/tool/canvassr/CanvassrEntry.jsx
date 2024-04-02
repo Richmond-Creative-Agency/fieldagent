@@ -1,5 +1,53 @@
 import H2 from '../../ui/typography/H2';
 import H3 from '../../ui/typography/H3';
+import { Suspense, useRef, useState } from 'react';
+
+function Field({ entry, field, setCanvassList }) {
+  const [isEditing, setIsEditing] = useState(false);
+
+  let elementClasses = 'text-slate-600';
+  let inputRef = useRef(entry[field]);
+
+  function handleEdit() {
+    setIsEditing(true);
+  }
+
+  function handleSubmit() {
+    let newEntry = { ...entry };
+    newEntry[field] = inputRef.current.value;
+    setIsEditing(false);
+    setCanvassList(newEntry);
+  }
+
+  let element = (
+    <input
+      className={elementClasses}
+      ref={inputRef}
+      defaultValue={inputRef.current}
+    />
+  );
+  if (field === 'id') {
+    element = null;
+  }
+  if (field === 'notes') {
+    element = <textarea className={elementClasses} />;
+  }
+  return (
+    <>
+      <p>
+        {field}: {entry[field]}
+      </p>
+      {isEditing && (
+        <>
+          {element}
+          <button onClick={handleSubmit}>Submit</button>
+        </>
+      )}
+      {element && !isEditing && <button onClick={handleEdit}>Edit</button>}
+    </>
+  );
+}
+
 export default function CanvassrEntry({ entry, index, setCanvassList }) {
   const { first_name, last_name, canvass_state = null } = entry;
 
@@ -29,11 +77,15 @@ export default function CanvassrEntry({ entry, index, setCanvassList }) {
       <div className="py-2">
         <H3>Fields</H3>
         {objectKeys.map((key, index) => {
-          // TODO: #8 Add support for editing fields
           return (
-            <p key={index}>
-              {key}: {entry[key]}
-            </p>
+            <Suspense key={key} fallback={<p>Loading Field</p>}>
+              <Field
+                entry={entry}
+                setCanvassList={setCanvassList}
+                field={key}
+                index={index}
+              />
+            </Suspense>
           );
         })}
       </div>
