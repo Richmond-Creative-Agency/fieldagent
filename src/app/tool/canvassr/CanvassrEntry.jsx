@@ -30,7 +30,13 @@ function Field({ entry, field, setCanvassList }) {
     element = null;
   }
   if (field === 'notes') {
-    element = <textarea className={elementClasses} />;
+    element = (
+      <textarea
+        className={elementClasses}
+        ref={inputRef}
+        defaultValue={entry[field]}
+      />
+    );
   }
   return (
     <>
