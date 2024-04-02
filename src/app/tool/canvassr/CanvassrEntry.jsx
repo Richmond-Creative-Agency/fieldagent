@@ -5,7 +5,7 @@ import { Suspense, useRef, useState } from 'react';
 function Field({ entry, field, setCanvassList }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  let elementClasses = 'text-slate-600';
+  let elementClasses = 'text-slate-600 p-2';
   let inputRef = useRef(entry[field]);
 
   function handleEdit() {
@@ -34,16 +34,18 @@ function Field({ entry, field, setCanvassList }) {
   }
   return (
     <>
-      <p>
+      <p className="md:flex gap-4 justify-between">
         {field}: {entry[field]}
+        {element && !isEditing && <button onClick={handleEdit}>Edit</button>}
       </p>
       {isEditing && (
         <>
           {element}
-          <button onClick={handleSubmit}>Submit</button>
+          <button className="bg-slate-800 p-2" onClick={handleSubmit}>
+            Submit
+          </button>
         </>
       )}
-      {element && !isEditing && <button onClick={handleEdit}>Edit</button>}
     </>
   );
 }
@@ -51,13 +53,13 @@ function Field({ entry, field, setCanvassList }) {
 export default function CanvassrEntry({ entry, index, setCanvassList }) {
   const { first_name, last_name, canvass_state = null } = entry;
 
-  let classes = 'p-4 my-2 col-span-3 rounded-md bg-slate-900';
+  let classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-slate-900';
 
   if (canvass_state === 'canvassed') {
-    classes = 'p-4 my-2 col-span-3 rounded-md bg-green-900';
+    classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-green-900';
   }
   if (canvass_state === 'rejected') {
-    classes = 'p-4 my-2 col-span-3 rounded-md bg-red-900';
+    classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-red-900';
   }
 
   function canvassContact() {
