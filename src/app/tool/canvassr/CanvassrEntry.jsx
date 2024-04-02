@@ -45,12 +45,12 @@ function Field({ entry, field, setCanvassList }) {
         {element && !isEditing && <button onClick={handleEdit}>Edit</button>}
       </p>
       {isEditing && (
-        <>
+        <div className="flex flex-col">
           {element}
           <button className="bg-slate-800 p-2" onClick={handleSubmit}>
             Submit
           </button>
-        </>
+        </div>
       )}
     </>
   );
