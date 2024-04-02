@@ -1,6 +1,19 @@
 Built on NextJS
 
-Organizer Toolkit for organizers, by organizers.
+## Our Vision
+
+An Organizer Toolkit for organizers, by organizers. Free to use, scalable, and editable.
+
+### Canvassr
+
+Canvassr is a tool to create, edit, import and export canvassing lists, and mark down how folks have responded. Designed to be exported to and from different systems or passed around.
+
+Features:
+
+- Create canvassing Lists
+- Import lists from other services/crms
+- Export canvassing lists
+- Edit data in webapp.
 
 ## Getting Started
 
