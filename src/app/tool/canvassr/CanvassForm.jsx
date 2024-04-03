@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import CanvassButton from './CanvassButton';
+import { inputClasses } from '@/app/ui/classes';
 
 const formPlaceHolders = {
   'First Name': 'first_name',
@@ -7,7 +8,7 @@ const formPlaceHolders = {
   'Email Address': 'email',
   'Phone Number': 'phone',
   'Address Line 1': 'address',
-  'City': 'city',
+  City: 'city',
 };
 
 const initialFormData = {
@@ -43,7 +44,7 @@ export default function CanvassForm({ formAction }) {
     <div className="flex flex-col">
       {Object.keys(formPlaceHolders).map((item) => (
         <input
-          className="text-slate-600 p-1"
+          className={inputClasses}
           name={item}
           key={item}
           placeholder={item}
@@ -57,7 +58,7 @@ export default function CanvassForm({ formAction }) {
         />
       ))}
       <select
-        className="text-slate-600 p-1"
+        className={inputClasses}
         value={formData.state}
         onChange={(e) => {
           setFormData({ ...formData, state: e.target.value });
@@ -116,7 +117,7 @@ export default function CanvassForm({ formAction }) {
         <option value="WY">Wyoming</option>
       </select>
       <textarea
-        className="text-slate-600 p-1"
+        className={inputClasses}
         placeholder="Notes Here"
         cols="10"
         rows="10"
