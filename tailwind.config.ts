@@ -19,6 +19,8 @@ const config: Config = {
       primary: '#023436',
       gray: '#DCE1DE',
       red: '#DB716E',
+      black: '#000000',
+      white: '#FFFFFF',
     },
   },
   plugins: [],
