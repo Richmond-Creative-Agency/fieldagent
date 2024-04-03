@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { buttonClasses } from '@/app/ui/classes';
 export default function ImportCSV({ updateEntries, ...props }) {
   let csvRef = useRef(null);
   function importCSV() {
@@ -37,12 +38,12 @@ export default function ImportCSV({ updateEntries, ...props }) {
 
       <input
         id="import-csv"
-        className="p-2 mb-2 bg-slate-800"
+        className="p-2 mb-2 bg-blue"
         ref={csvRef}
         type="file"
         accept=".csv"
       />
-      <button className="p-2 bg-slate-800" onClick={importCSV}>
+      <button className={buttonClasses} onClick={importCSV}>
         Submit
       </button>
     </>

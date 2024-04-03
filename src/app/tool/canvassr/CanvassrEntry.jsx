@@ -1,11 +1,16 @@
 import H2 from '../../ui/typography/H2';
 import H3 from '../../ui/typography/H3';
 import { Suspense, useRef, useState } from 'react';
+import {
+  buttonClasses,
+  inputClasses,
+  redButtonClasses,
+} from '@/app/ui/classes';
 
 function Field({ entry, field, setCanvassList }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  let elementClasses = 'text-slate-600 p-2';
+  let elementClasses = inputClasses;
   let inputRef = useRef(null);
 
   function handleEdit() {
@@ -42,12 +47,16 @@ function Field({ entry, field, setCanvassList }) {
     <>
       <p className="md:flex gap-4 justify-between">
         {field}: {entry[field]}
-        {element && !isEditing && <button onClick={handleEdit}>Edit</button>}
+        {element && !isEditing && (
+          <button className="mx-1" onClick={handleEdit}>
+            Edit
+          </button>
+        )}
       </p>
       {isEditing && (
         <div className="flex flex-col">
           {element}
-          <button className="bg-slate-800 p-2" onClick={handleSubmit}>
+          <button className={buttonClasses} onClick={handleSubmit}>
             Submit
           </button>
         </div>
@@ -59,13 +68,13 @@ function Field({ entry, field, setCanvassList }) {
 export default function CanvassrEntry({ entry, index, setCanvassList }) {
   const { first_name, last_name, canvass_state = null } = entry;
 
-  let classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-slate-900';
+  let classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-primary/50';
 
   if (canvass_state === 'canvassed') {
-    classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-green-900';
+    classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-green/50';
   }
   if (canvass_state === 'rejected') {
-    classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-red-900';
+    classes = 'p-4 my-2 md:col-span-4 lg:col-span-3 rounded-md bg-red/50';
   }
 
   function canvassContact() {
@@ -99,10 +108,10 @@ export default function CanvassrEntry({ entry, index, setCanvassList }) {
       </div>
 
       <div className="flex space-between gap-4">
-        <button className="p-2 bg-green-500" onClick={canvassContact}>
+        <button className={buttonClasses} onClick={canvassContact}>
           Canvassed
         </button>
-        <button className="p-2 bg-pink-500" onClick={rejectContact}>
+        <button className={redButtonClasses} onClick={rejectContact}>
           Rejected
         </button>
       </div>

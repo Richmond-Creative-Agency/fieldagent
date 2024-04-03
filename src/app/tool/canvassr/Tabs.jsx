@@ -3,6 +3,7 @@ import ImportCSV from './ImportCSV';
 import ExportCSV from './ExportCSV';
 import H2 from '../../ui/typography/H2';
 import { useState, Suspense } from 'react';
+import { buttonClasses } from '@/app/ui/classes';
 
 export default function Tabs({ children, ...props }) {
   const [activeTab, setActiveTab] = useState('Entries');
@@ -48,7 +49,6 @@ export default function Tabs({ children, ...props }) {
   );
 }
 function TabButton({ title, tabAction }) {
-  let buttonClasses = 'p-2 bg-slate-600 ';
   return (
     <>
       <li>
