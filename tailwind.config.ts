@@ -15,7 +15,7 @@ const config: Config = {
     colors: {
       current: 'currentColor',
       green: '#4D8242',
-      lightBlue: '#218196',
+      blue: '#218196',
       primary: '#023436',
       gray: '#DCE1DE',
       red: '#DB716E',
