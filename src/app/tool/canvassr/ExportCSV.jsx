@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-
+import { buttonClasses } from '@/app/ui/classes';
 export default function ExportCSV({ downloadLink, makeCSV, canvassList }) {
   let [downloadName, setDownloadName] = useState('canvassr-export');
   let ref = useRef(null);
@@ -21,7 +21,7 @@ export default function ExportCSV({ downloadLink, makeCSV, canvassList }) {
 
       <a
         href={downloadLink}
-        className="bg-slate-800 p-2"
+        className={buttonClasses}
         download={downloadName}
         onClick={() => {
           makeCSV(canvassList);

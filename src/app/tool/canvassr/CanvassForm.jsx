@@ -1,95 +1,68 @@
-import { useRef } from 'react';
-import H2 from '../../ui/typography/H2';
-import CanvassInput from './CanvassInput';
+import { useState } from 'react';
 import CanvassButton from './CanvassButton';
+
+const formPlaceHolders = {
+  'First Name': 'first_name',
+  'Last Name': 'last_name',
+  'Email Address': 'email',
+  'Phone Number': 'phone',
+  'Address Line 1': 'address',
+  'City': 'city',
+};
+
+const initialFormData = {
+  first_name: '',
+  last_name: '',
+  phone: '',
+  email: '',
+  address: '',
+  city: '',
+  state: '',
+  notes: '',
+};
+
 export default function CanvassForm({ formAction }) {
-  // TODO: #1 Ref refactor this.
-  let firstNameRef = useRef(null);
-  let lastNameRef = useRef(null);
-  let phoneRef = useRef(null);
-  let emailRef = useRef(null);
-  let addressRef = useRef(null);
-  let cityRef = useRef(null);
-  let stateRef = useRef(null);
-  let noteRef = useRef(null);
+  const [formData, setFormData] = useState(initialFormData);
 
   function clearInputs() {
-    firstNameRef.current.value = '';
-    lastNameRef.current.value = '';
-    emailRef.current.value = '';
-    phoneRef.current.value = '';
-    addressRef.current.value = '';
-    cityRef.current.value = '';
-    stateRef.current.selectedIndex = 0;
-    noteRef.current.value = '';
+    setFormData(initialFormData);
   }
 
   function handleSubmit() {
-    let newFirstName = firstNameRef.current.value.trim();
-    let newLastName = lastNameRef.current.value.trim();
-    let newPhone = phoneRef.current.value.trim();
-    let newEmail = emailRef.current.value.trim();
-    let newAddress = addressRef.current.value.trim();
-    let newCity = cityRef.current.value.trim();
-    let newState = stateRef.current.value.trim();
-    let newNotes = noteRef.current.value.trim();
-
-    let entry = {
-      first_name: newFirstName,
-      last_name: newLastName,
-      phone: newPhone,
-      email: newEmail,
-      address: newAddress,
-      city: newCity,
-      state: newState,
-      notes: newNotes,
-    };
-    // TODO: #2 Error message if fields empty
-    if (!newFirstName || !newLastName || !newEmail) return;
-    clearInputs();
+    const entry = formData;
+    if (!entry.first_name || !entry.last_name || !entry.email) {
+      alert('Please fill in name and email fields, they are required.');
+      return;
+    }
+    console.log(formData);
     formAction(entry);
+    clearInputs();
   }
 
   return (
     <div className="flex flex-col">
-      <CanvassInput
+      {Object.keys(formPlaceHolders).map((item) => (
+        <input
+          className="text-slate-600 p-1"
+          name={item}
+          key={item}
+          placeholder={item}
+          value={formData[formPlaceHolders[item]]}
+          onChange={(e) => {
+            setFormData({
+              ...formData,
+              [formPlaceHolders[item]]: e.target.value,
+            });
+          }}
+        />
+      ))}
+      <select
         className="text-slate-600 p-1"
-        ref={firstNameRef}
-        required
-        placeholder="First Name"
-      />
-      <CanvassInput
-        className="text-slate-600 p-1"
-        ref={lastNameRef}
-        required
-        placeholder="Last Name"
-      />
-      <CanvassInput
-        className="text-slate-600 p-1"
-        ref={emailRef}
-        required
-        placeholder="Email Address"
-        type="email"
-      />
-      <CanvassInput
-        className="text-slate-600 p-1"
-        ref={phoneRef}
-        placeholder="Phone Number"
-        type="number"
-      />
-      <CanvassInput
-        className="text-slate-600 p-1"
-        ref={addressRef}
-        placeholder="Address Line 1"
-        type="text"
-      />
-      <CanvassInput
-        className="text-slate-600 p-1"
-        ref={cityRef}
-        placeholder="City"
-        type="text"
-      />
-      <select className="text-slate-600 p-1" ref={stateRef}>
+        value={formData.state}
+        onChange={(e) => {
+          setFormData({ ...formData, state: e.target.value });
+        }}
+      >
         <option value="">State</option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
@@ -144,10 +117,13 @@ export default function CanvassForm({ formAction }) {
       </select>
       <textarea
         className="text-slate-600 p-1"
-        ref={noteRef}
         placeholder="Notes Here"
         cols="10"
         rows="10"
+        value={formData.notes}
+        onChange={(e) => {
+          setFormData({ ...formData, notes: e.target.value });
+        }}
       ></textarea>
 
       <CanvassButton
