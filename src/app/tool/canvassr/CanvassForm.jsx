@@ -44,8 +44,11 @@ export default function CanvassForm({ formAction }) {
       state: newState,
       notes: newNotes,
     };
-    // TODO: #2 Error message if fields empty
-    if (!newFirstName || !newLastName || !newEmail) return;
+    if (!newFirstName || !newLastName || !newEmail)
+    {
+        alert("Please fill in all required fields.");
+        return;
+    }
     clearInputs();
     formAction(entry);
   }
