@@ -2,9 +2,7 @@ import CanvassForm from './CanvassForm';
 import ImportCSV from './ImportCSV';
 import ExportCSV from './ExportCSV';
 import H2 from '../../ui/typography/H2';
-import { useState } from 'react';
-
-import { Suspense } from 'react';
+import { useState, Suspense } from 'react';
 
 export default function Tabs({ children, ...props }) {
   const [activeTab, setActiveTab] = useState('Entries');
