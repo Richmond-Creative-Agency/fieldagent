@@ -1,13 +1,16 @@
 import H2 from '../../ui/typography/H2';
 import H3 from '../../ui/typography/H3';
 import { Suspense, useRef, useState } from 'react';
-
-import { buttonClasses, redButtonClasses } from '@/app/ui/classes';
+import {
+  buttonClasses,
+  inputClasses,
+  redButtonClasses,
+} from '@/app/ui/classes';
 
 function Field({ entry, field, setCanvassList }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  let elementClasses = 'text-slate-600 p-2';
+  let elementClasses = inputClasses;
   let inputRef = useRef(null);
 
   function handleEdit() {

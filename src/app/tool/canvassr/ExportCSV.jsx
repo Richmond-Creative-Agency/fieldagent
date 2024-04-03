@@ -14,7 +14,7 @@ export default function ExportCSV({ downloadLink, makeCSV, canvassList }) {
       <input
         id="download-name"
         ref={ref}
-        className="text-slate-600 p-2 mb-2"
+        className="text-black p-2 mb-2"
         onChange={handleDownloadName}
         defaultValue={downloadName}
       />
