@@ -7,7 +7,7 @@ const formPlaceHolders = {
   'Email Address': 'email',
   'Phone Number': 'phone',
   'Address Line 1': 'address',
-  City: 'city',
+  'City': 'city',
 };
 
 const initialFormData = {
