@@ -16,15 +16,14 @@ export default function Home() {
           Field Agent is a set of Tools designed for organizers, by organizers.
         </P>
         <P>
-          Field Agent is a project of
           <Link href="https://richmondcreative.agency">
-            Richmond Creative Agency LLC
+            Project of Richmond Creative Agency LLC
           </Link>
         </P>
         <P>
-          <Button href="/about" passHref>
+          <Link href="/about" passHref>
             About
-          </Button>
+          </Link>
         </P>
       </Main>
     </>
