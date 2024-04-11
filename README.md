@@ -15,6 +15,19 @@ Features:
 - Export canvassing lists
 - Edit data in webapp.
 
+### Emailr
+
+Emailr is a tool to email your City Officials!
+
+Features:
+
+- Current Cities Supported:
+  - Richmond, VA
+- Draft emails to send to your city officals
+- Token support:
+  - [!!DISTRICT!!] - replaces token with district you are in.
+  - [!!CITY_MEMBER!!] - Replaces token with City Member
+
 ## Getting Started
 
 First, run the development server:
