@@ -1,11 +1,8 @@
-import Image from 'next/image';
-import Header from './ui/header/Header';
 import H1 from './ui/typography/H1';
 import H2 from './ui/typography/H2';
 import P from './ui/typography/P';
 import Link from 'next/link';
 import Main from './ui/components/Main';
-import Button from './ui/components/Button';
 export default function Home() {
   return (
     <>

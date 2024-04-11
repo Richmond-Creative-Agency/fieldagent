@@ -1,4 +1,4 @@
-Built on NextJS
+Built on NextJS, and TailwindCSS
 
 ## Our Vision
 

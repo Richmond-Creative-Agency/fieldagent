@@ -3,7 +3,7 @@ import Emailr from './Emailr';
 
 export const metadata = {
   title: 'Emailr | Field Agent',
-  description: 'Email your community',
+  description: 'Email your City with Emailr!',
 };
 
 export default function Page() {

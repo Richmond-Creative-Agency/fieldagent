@@ -140,7 +140,7 @@ I am a constituent of the [!!DISTRICT!!] district under Council Member [!!CITY_M
     emailAddress: getInitialItems(),
     subject: 'Ceasefire Resolution',
     emailBody: emailBody,
-    district: 'At Large',
+    district: '0',
   };
   const [emailObject, setEmailObject] = useState(initialEmail);
   return (
@@ -173,7 +173,7 @@ I am a constituent of the [!!DISTRICT!!] district under Council Member [!!CITY_M
             className={`${buttonClasses} inline-block`}
             href={generateEmail(emailObject)}
           >
-            Send an email to city council
+            Send an email to Richmond City Hall
           </a>
         </div>
       </div>
