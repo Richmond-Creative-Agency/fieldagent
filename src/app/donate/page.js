@@ -17,7 +17,8 @@ export default function Page() {
 
       <P>
         Your support helps us continue to build and develop the tools that
-        communities need to win power and organize!
+        communities need to organize. Please consider making a donation to
+        support this important work.
       </P>
     </Main>
   );
