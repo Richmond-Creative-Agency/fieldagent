@@ -15,7 +15,7 @@ export default function Emailr() {
   let emailBody = `Dear [______], \n
 My name is [______] and I am a constituent of the [______] district and I am writing to you today to demand that you adopt the Richmond Consensus Resolution that calls for an immediate and permanent ceasefire in Gaza. I am deeply troubled by Israel's genocide of the Palestinian people and my country's unwavering support for this. US tax dollars and weapons are being used to indiscriminately kill Palestinians. Our Senators and Congressperson have continued to support this through their votes in favor of sending continued financial support and weapons to Israel. I am asking you to use your position to intervene by passing this resolution and urging our reps in Virginia to stop supporting Israel. I will not vote for any politician in November who does not condemn Israel's actions and who does not explicitly vote or engage in litigation to end the transfer of weapons and money to Israel. \n
 Thank you, \n
-[______];
+[______];`;
 
   const selectValues = {
     'All of Them!': 'All',
