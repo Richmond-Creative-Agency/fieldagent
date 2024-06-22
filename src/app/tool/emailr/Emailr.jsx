@@ -173,7 +173,7 @@ I am a constituent of the [!!DISTRICT!!] district under Council Member [!!CITY_M
             className={`${buttonClasses} inline-block`}
             href={generateEmail(emailObject)}
           >
-            Send an email to Richmond City Hall
+            Generate an email to Richmond City Hall
           </a>
         </div>
       </div>
