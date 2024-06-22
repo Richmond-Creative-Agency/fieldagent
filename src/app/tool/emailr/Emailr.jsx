@@ -19,15 +19,23 @@ Thank you, \n
 
   const selectValues = {
     'All of Them!': 'All',
-    'Andreas Addison 1st District': 'andreas.addison@rva.gov''whitney.brown@rva.gov',
-    'Katherine Jordan 2nd District': 'katherine.jordan@rva.gov''sven.philipsen@rva.gov',
-    'Ann-Frances Lambert 3rd District': 'ann-frances.lambert@rva.gov''kiya.stokes@rva.gov',
-    'Kristen Nye 4th District': 'kristen.larson@rva.gov''timmy.siverd@rva.gov',
-    'Stephanie Lynch 5th District': 'stephanie.lynch@rva.gov''amy.robins@rva.gov',
-    'Ellen Robertson 6th District': 'ellen.robertson@rva.gov''gayle.harris@rva.gov',
-    'Cynthia Newbille 7th District': 'cynthia.newbille@rva.gov''sam.patterson@rva.gov',
-    'Reva Trammell 8th District': 'reva.trammell@rva.gov''richard.bishop@rva.gov',
-    'Nicole Jones 9th District': 'nicole.jones@rva.gov''dominique.mckenzie2@rva.gov',
+    'Andreas Addison 1st District':
+      'andreas.addison@rva.gov, whitney.brown@rva.gov',
+    'Katherine Jordan 2nd District':
+      'katherine.jordan@rva.gov, sven.philipsen@rva.gov',
+    'Ann-Frances Lambert 3rd District':
+      'ann-frances.lambert@rva.gov, kiya.stokes@rva.gov',
+    'Kristen Nye 4th District': 'kristen.larson@rva.gov, timmy.siverd@rva.gov',
+    'Stephanie Lynch 5th District':
+      'stephanie.lynch@rva.gov, amy.robins@rva.gov',
+    'Ellen Robertson 6th District':
+      'ellen.robertson@rva.gov, gayle.harris@rva.gov',
+    'Cynthia Newbille 7th District':
+      'cynthia.newbille@rva.gov, sam.patterson@rva.gov',
+    'Reva Trammell 8th District':
+      'reva.trammell@rva.gov, richard.bishop@rva.gov',
+    'Nicole Jones 9th District':
+      'nicole.jones@rva.gov, dominique.mckenzie2@rva.gov',
   };
   const districts = [
     'All',
@@ -145,7 +153,7 @@ Thank you, \n
             handleChange={selectRecipient}
             selectValues={selectValues}
           />
-          <DistrictSelect handleChange={selectDistrict} districts={districts} />
+          {/* <DistrictSelect handleChange={selectDistrict} districts={districts} /> */}
         </div>
         <EmailSubject
           handleChange={handleSubjectChange}
