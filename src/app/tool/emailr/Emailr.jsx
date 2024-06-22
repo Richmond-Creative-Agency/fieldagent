@@ -154,7 +154,6 @@ Thank you, \n
             handleChange={selectRecipient}
             selectValues={selectValues}
           />
-          <DistrictSelect handleChange={selectDistrict} districts={districts} />
         </div>
         <EmailSubject
           handleChange={handleSubjectChange}
