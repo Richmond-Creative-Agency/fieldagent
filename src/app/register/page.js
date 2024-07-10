@@ -1,4 +1,4 @@
-import Header from '../ui/header/Header';
+import Navigation from '../ui/navigation/Navigation';
 import Input from '../ui/Input';
 export const metadata = {
   title: 'Register a new account | Field Agent',
@@ -7,7 +7,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header />
+      <Navigation />
       <main className="flex min-h-screen flex-col items-center p-24">
         <h1 className="mb-4 text-3xl">Interested? Register Now</h1>
         <form className="flex flex-col bg-slate-600 p-4 rounded-sm">
