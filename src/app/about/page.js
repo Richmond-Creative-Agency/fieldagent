@@ -12,9 +12,10 @@ export default function Page() {
         communities.
       </P>
       <P>
-        We built this tool to help organizers canvass their communities and
+        We built these tools to help organizers canvass their communities and
         email their city councilors.
       </P>
+      <P>Support for Richmond, Virginia City Council</P>
     </Main>
   );
 }
