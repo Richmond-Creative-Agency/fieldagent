@@ -1,5 +1,5 @@
 import Navigation from '../navigation/Navigation';
-import Link from 'next/link';
+
 import Menu from './Menu';
 import NavButton from './NavButton';
 import { Suspense } from 'react';
