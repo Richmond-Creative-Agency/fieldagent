@@ -174,7 +174,7 @@ Thank you, \n
             className={`${buttonClasses} inline-block`}
             href={generateEmail(emailObject)}
           >
-            Generate an email to Richmond City Hall
+            Generate an email to Richmond City Council
           </a>
         </div>
       </div>
