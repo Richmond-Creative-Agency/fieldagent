@@ -3,12 +3,12 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const name = searchParams.get('Name');
-  const userName = searchParams.get('UserName');
+  const name = searchParams.get('name');
+  const email = searchParams.get('email');
 
   try {
-    if (!name || !userName) throw new Error('Name and username required');
-    await sql`INSERT INTO Users (Name, User_name) VALUES (${name}, ${userName});`;
+    if (!name || !email) throw new Error('Name and Email required');
+    await sql`INSERT INTO Users (Name, email) VALUES (${name}, ${email});`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
